@@ -290,6 +290,9 @@ console.log(result);
   app.get("/blog2", (req, res)=> {
     res.render("blog2");
   })
+  app.get("/blog3", (req, res)=> {
+    res.render("blog3");
+  })
 
   // Feedback page rendering
   app.get("/feedback", (req, res)=> {
