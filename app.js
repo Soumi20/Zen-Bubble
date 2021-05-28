@@ -259,7 +259,7 @@ io.on('connection', (socket) => {
     const emotiontext = req.body.emotiontxt;
     var sentiment = new Sentiment();
     result = sentiment.analyze(emotiontext,options).comparative;
-
+console.log(result);
     res.render("community",{result:result});
     //return res.redirect("index");
   });
