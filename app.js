@@ -33,7 +33,7 @@
  // Database connect
  mongoose.connect("mongodb+srv://chehak:123@cluster0.ohkb1.mongodb.net/UserDB" , {useNewUrlParser : true, useUnifiedTopology: true } );
 
-app.use(methodOverride("_method"));
+ app.use(methodOverride("_method"));
  app.use(passport.initialize());  //use to use passport in our code
  app.use(passport.session());
  
@@ -291,6 +291,7 @@ console.log(result);
     res.render("blog2");
   })
 
+  // Feedback page rendering
   app.get("/feedback", (req, res)=> {
     res.render("feedback");
   })
