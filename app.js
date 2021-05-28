@@ -1,8 +1,6 @@
   // Imports 
   require('dotenv').config({ path: 'variables.env' });
-    
-
-    const webPush = require('web-push');
+  const webPush = require('web-push');
   const express = require("express");
   const path = require("path");
   const mongoose = require("mongoose");
