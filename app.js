@@ -293,6 +293,10 @@ io.on('connection', (socket) => {
     res.render("blog2");
   })
 
+  app.get("/feedback", (req, res)=> {
+    res.render("feedback");
+  })
+
   // Profile page rendering
   app.get("/profile", (req, res)=> {
     res.render("profile");
