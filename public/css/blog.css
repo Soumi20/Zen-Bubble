@@ -14,7 +14,8 @@
 
 .blog-img {
     float: right;
-    width: 400px;
+    max-width: 400px;
+    max-height: 400px;
 }
 
 p {
