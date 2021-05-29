@@ -265,13 +265,14 @@ app.post("/community", function (req, res) {
           console.log(err)
       }
       else{
-        Match.findOneAndDelete({username:req.user.username},function(err,user){
+if(user!=null){
+        Match.findOneAndDelete({username:req.user.username},function(err,userf){
           if(err) console.log(err)
           else
           console.log("Deleted Matching user");
         })
         counter++;
-          console.log("Deleted User : ", user);
+          console.log("Deleted User : ", user);}
       }
   });
     /*Match.find({ feeling: 1 }, function (err, queries) {
@@ -280,13 +281,28 @@ app.post("/community", function (req, res) {
       res.render("community", { query: queries, result: result });
     });*/
   } else {
-    counter++;
+    /*counter++;
     //var query=Match.find({ score: { $lt: 0 } });
     //var query=Match.find({ score:-1} );
     Match.find({ feeling: -1 }, function (err, queries) {
       console.log(queries);
       res.render("community", { query: queries, result: result });
-    });
+    });*/
+    Match.findOneAndDelete({feeling: { $lt: 0} }, function (err, user) {
+      if (err){
+          console.log(err)
+      }
+      else{
+        if(user!=null){
+        Match.findOneAndDelete({username:req.user.username},function(err,userf){
+          if(err) console.log(err)
+          else
+          console.log("Deleted Matching user");
+        })
+        counter++;
+          console.log("Deleted User : ", user);}
+      }
+  });
   }
 });
 /*query.find({},function(err,queries){
