@@ -1,5 +1,6 @@
   // Imports 
   require('dotenv').config({ path: 'variables.env' });
+  //require('dotenv').config();
   const webPush = require('web-push');
   const express = require("express");
   const path = require("path");
@@ -255,26 +256,43 @@ Match.create({
     console.log(err);
   }
   else
-  console.log(newlyCreated);
+  ;
+  //console.log(newlyCreated);
 });
-    res.render("community",{result:result});
+   
     console.log(result);
     /*res.render("community",{result:result});*/
-    console.dir(result);
+   
 
-    if(result<0){
+   /* if(result<0){
       var query=MatchUser.find({ score: { $gt: -1 } });
    }else{
       var query=MatchUser.find({ score: { $lt: 0 } });
-   }
-
-   query.find({},function(err,query){
-     res.render("community", {query:query,result:result})
+   }*/
+   if(result<0){
+    //var query=Match.find({ score: { $gt: -1 } });
+    //var query=Match.find({ score:1} );
+Match.find({feeling:1},function(err,queries){
+  console.log(queries)
+  res.render("community", {query:queries,result:result})
+  });
+ }else{
+    //var query=Match.find({ score: { $lt: 0 } });
+    //var query=Match.find({ score:-1} );
+    Match.find({feeling:-1},function(err,queries){
+      console.log(queries)
+      res.render("community", {query:queries,result:result})
+      });
+ }
+});
+   /*query.find({},function(err,queries){
+     console.log(queries)
+     res.render("community", {query:queries,result:result})
      });
-
+     res.render("community",{result:result});
     // res.ren/der("community",{result:result});
     //return res.redirect("index");
-  });
+  });*/
 
   app.get("/community", (req, res)=> {
     // const query
