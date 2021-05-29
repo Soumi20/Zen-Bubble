@@ -22,6 +22,7 @@
 
    //passport authentication
    var User=require("./db/models/users");
+   var Match=require("./db/models/match");
    var MatchUser=require("./db/models/match");
    var passport=require("passport");
    var localStrategy=require("passport-local"),
@@ -243,6 +244,27 @@ io.on('connection', (socket) => {
     const emotiontext = req.body.emotiontxt;
     var sentiment = new Sentiment();
     result = sentiment.analyze(emotiontext,options).comparative;
+console.log(result);
+var name=req.user.name;
+var username=req.user.username;
+var score=req.user.score;
+var feeling=result;
+Match.create({
+  name:name,
+  username:username,
+  score:score,
+  feeling:result
+}, function(err,newlyCreated){
+  if(err)
+  {
+    console.log(err);
+  }
+  else
+  console.log(newlyCreated);
+});
+    res.render("community",{result:result});
+    console.log(result);
+    /*res.render("community",{result:result});*/
     console.dir(result);
 
     if(result<0){
