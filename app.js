@@ -1,5 +1,5 @@
 // Imports
-require("dotenv").config({ path: "variables.env" });
+require("dotenv").config({ path: ".env" });
 //require('dotenv').config();
 const webPush = require("web-push");
 const express = require("express");
@@ -104,7 +104,7 @@ app.post("/subscribe", (req, res) => {
   res.status(201).json({});
 
   const payload = JSON.stringify({
-    title: "Room Id for community help",
+    title: "Join room ID 123 for community help",
   });
   webPush
     .sendNotification(subscription, payload)

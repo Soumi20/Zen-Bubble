@@ -4,8 +4,9 @@
     "description": "A community app for helping each other with bettering their mental healths with a gamified rewarding system for moral boost.",
     "main": "app.js",
     "scripts": {
+        "start": "node app.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "nodemon npm ruapp.js -e js,ejs"
+        "dev": "nodemon npm app.js -e js,ejs"
     },
     "author": "Swatilekha Roy",
     "license": "MIT",
@@ -16,6 +17,7 @@
         "ejs": "^3.1.6",
         "express": "^4.17.1",
         "express-session": "^1.17.2",
+        "heroku": "^7.54.0",
         "method-override": "^3.0.0",
         "moment": "^2.29.1",
         "mongodb": "^3.6.8",
