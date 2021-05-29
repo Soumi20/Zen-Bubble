@@ -65,6 +65,11 @@ function outputUsers(users) {
     `;
 }
 
+if(room == "meditation1")
+document.getElementById('audiotag1').play();
+else if(room == "meditation2")
+document.getElementById('audiotag2').play();
+
 
 
 
@@ -129,5 +134,3 @@ window.onload = function () {
   
 }
 
-
-export var meditationsc = medsc;

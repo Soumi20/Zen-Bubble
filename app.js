@@ -190,9 +190,9 @@ io.on('connection', (socket) => {
 
 //Community Room
 
-app.get("/room_container", (req, res)=> {
+/*app.get("/room_container", (req, res)=> {
   res.render("room_container");
-})
+})*/
 app.get("/room", (req, res)=> {
   res.render("room");
 })
@@ -337,9 +337,9 @@ Match.find({feeling:1},function(err,queries){
 
 const rooms = { } 
 
-app.get('/room_container', (req, res) => {
+/*app.get('/room_container', (req, res) => {
   res.render('room_container', { rooms: rooms })
-})
+})*/
 
 app.post('/room', (req, res) => {
   if (rooms[req.body.room] != null) {
