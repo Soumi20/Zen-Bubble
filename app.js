@@ -22,6 +22,7 @@
 
    //passport authentication
    var User=require("./db/models/users");
+   var MatchUser=require("./db/models/match");
    var passport=require("passport");
    var localStrategy=require("passport-local"),
    methodOverride=require("method-override");
@@ -40,9 +41,6 @@
  passport.use(new localStrategy(User.authenticate()));
  passport.serializeUser(User.serializeUser());
  passport.deserializeUser(User.deserializeUser());
- 
-
-
 
   // Socket.io imports
   const http = require("http");
@@ -242,15 +240,36 @@ io.on('connection', (socket) => {
     result = sentiment.analyze(emotiontext,options).comparative;
     console.dir(result);
 
-    res.render("community",{result:result});
+    if(result<0){
+      var query=MatchUser.find({ score: { $gt: -1 } });
+   }else{
+      var query=MatchUser.find({ score: { $lt: 0 } });
+   }
+
+   query.find({},function(err,query){
+     res.render("community", {query:query,result:result})
+     });
+
+    // res.ren/der("community",{result:result});
     //return res.redirect("index");
   });
 
   app.get("/community", (req, res)=> {
-    res.render("community",{
-      result:result
-    });
+    // const query
+    // res.render("community",{
+    //   result:result
+    // });
+    if(result<0){
+       var query=MatchUser.find({ score: { $gt: -1 } });
+    }else{
+       var query=MatchUser.find({ score: { $lt: 0 } });
+    }
+
+    query.find({},function(err,query){
+      res.render("community", {query:query, result:result})
+      });
   });
+
   result = 0;
 
 

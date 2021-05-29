@@ -81,7 +81,7 @@ window.onload = function () {
   buttonStart.onclick = function() {
     
      clearInterval(Interval);
-     Interval = setInterval(startTimer, 10);
+     Interval = setInterval(startTimer, 1000);
   }
   
     buttonStop.onclick = function() {
