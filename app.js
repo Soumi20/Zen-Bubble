@@ -244,18 +244,6 @@ io.on('connection', (socket) => {
     res.render("community",{result:result});
   });
 
-  /*app.get("/community",
-  function(req,res,next){
-    if(req.isAuthenticated()){
-      return next();
-    }
-    
-    res.render("modal_form.ejs"); 
-    }, (req, res)=> {
-    res.render("community",{
-      result:result
-    });
-  });*/
   result = 0;
 
   // Journal page rendering
