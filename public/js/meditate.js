@@ -3,7 +3,7 @@ const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
-  
+var medsc;
 
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -72,8 +72,8 @@ function outputUsers(users) {
 
 window.onload = function () {
   
-  var seconds = 00; 
-  var tens = 00; 
+  var seconds = 0; 
+  var tens = 0; 
   var appendTens = document.getElementById("tens")
   var appendSeconds = document.getElementById("seconds")
   var buttonStart = document.getElementById('button-start');
@@ -89,14 +89,18 @@ window.onload = function () {
   
     buttonStop.onclick = function() {
        clearInterval(Interval);
-       
-  
+
+
   // Calculate points
-  if(tens >= 30*5)
-  {
-    var sc = 5*(tens/60);
-    console.log(sc);
-  }
+
+    if(seconds >= 5)
+    {
+      medsc = 5*seconds;
+      console.log(medsc);
+    }
+    medsc = 5;
+    console.log(medsc);
+  
 }
 
   
@@ -113,9 +117,7 @@ window.onload = function () {
     } 
     
     if (tens > 59) {
-      console.log("seconds");
       seconds++;
-      console.log(seconds);
       appendSeconds.innerHTML = "0" + seconds;
       tens = 0;
       appendTens.innerHTML = "0" + 0;
@@ -130,3 +132,4 @@ window.onload = function () {
 }
 
 
+export var meditationsc = medsc;

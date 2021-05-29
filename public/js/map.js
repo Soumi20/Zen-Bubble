@@ -1,6 +1,7 @@
 // Find present device location
 var lat,lon;
 
+
 // Request Location
 document.getElementById("request-geo").addEventListener("click", requestGeo);
 
@@ -40,7 +41,7 @@ function geoFailure(error)
             subscriptionKey: 'BWqFiXxZP9rfe-C-Bp-wOskE-9jrDKpTWzI-Rmg5W7Y'
         }
     });
-
+    console.log("Wait1");
     //Wait until the map resources are ready.
     map.events.add('ready', function () {
 
@@ -61,6 +62,7 @@ function geoFailure(error)
         });
 
         map.layers.add(resultLayer);
+        console.log("Wait2"); 
 
         //Use MapControlCredential to share authentication between a map control and the service module
         var pipeline = atlas.service.MapsURL.newPipeline(new atlas.service.MapControlCredential(map));
@@ -71,7 +73,7 @@ function geoFailure(error)
         var query = 'psychiatrist';
         var radius = 9000;
         
-        searchURL.searchPOI(atlas.service.Aborter.timeout(10000), query, {
+        searchURL.searchPOI(atlas.service.Aborter.timeout(5000), query, {
             limit: 10,
             lat: lat,
             lon: lon,
@@ -85,10 +87,12 @@ function geoFailure(error)
 
             // set camera to bounds to show the results
             map.setCamera({
-                bounds: data.bbox,
+                // bounds: data.bbox,
+                bounds: atlas.data.BoundingBox.fromData(data),
                 zoom: 10,
                 padding: 15
             });
+            console.log("Wait3");
           
         });
 
@@ -96,7 +100,7 @@ function geoFailure(error)
         popup = new atlas.Popup();
 
         //Add a mouse over event to the result layer and display a popup when this event fires.
-        map.events.add('mouseover', resultLayer, showPopup);
+        map.events.add('mouseover', resultLayer,showPopup);
         
 
         function showPopup(e) {

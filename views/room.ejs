@@ -47,27 +47,13 @@
     </div>
 </nav>
   
-    
-  <!--<audio id="audiotag1" src="/js/d.mp3" preload="auto"></audio>
-  <audio id="audiotag2" src="/js/g.mp3" preload="auto"></audio>
-  <audio id="audiotag3" src="/js/UptownFunk.mp3" preload="auto"></audio>
-  <audio id="audiotag4" src="/js/song2.mp3" preload="auto"></audio>
-  <audio id="audiotag5" src="/js/photograph.mp3" preload="auto"></audio>
-  <audio id="audiotag6" src="/js/s.mp3" preload="auto"></audio>-->
-
-  <div class="wrapper">
-  <p style="margin-top: 120px;"><span id="seconds">00</span>:<span id="tens">00</span></p>
-  <button id="button-start">Start</button>
-  <button id="button-stop">Stop</button>
-  <button id="button-reset">Reset</button>
- </div> 
 
 
   <div class="chat-container" style="margin-top: 70px;">
     <header class="chat-header">
      
-      <h1 style="color: #fff !important;">Meditation Zone</h1>
-      <a href="/meditate" class="btn">Leave Room</a>
+      <h1>Community Room</h1>
+      <a href="/room_container" class="btn">Leave Room</a>
     </header>
     <main class="chat-main">
       <div class="chat-sidebar">
@@ -77,18 +63,16 @@
         <ul id="users">
         </ul>
       </div>
-      <div class="chat-messages">
+      <div class="com-chat-messages">
       </div>
     </main>
     <div class="chat-form-container">
-      <form id="chat-form">
+      <form id="com-chat">
         <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
         <button class="btn"><i class="far fa-comment-dots"></i> Send</button>
       </form>
     </div>
   </div>
-
- 
 
   <!-- Footer -->
   <footer style="margin-top: 7%;">
@@ -118,7 +102,7 @@
  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="js/meditate.js"></script>
+  <script src="js/room.js"></script>
 
   <!-- Begin Constant Contact Active Forms -->
 <script> var _ctct_m = "a1c11d6c696741c92951eeed04d969e7"; </script>
