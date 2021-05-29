@@ -60,4 +60,6 @@ function outputRoomName(room) {
   roomName.innerText = "Room: 123";
 }
 
-
+function giveFeedback() {
+  window.location.replace('/feedback');
+}
