@@ -118,9 +118,17 @@
 
 
 //Meditation room
-app.get("/meditate", (req, res)=> {
+/*app.get("/meditate", (req, res)=> {
   res.sendFile(path.join(__dirname, './public/home.html'));
-});
+});*/
+
+app.get("/meditate", (req, res)=> {
+  res.render("meditate");
+})
+app.get("/medroom", (req, res)=> {
+  res.render("medroom");
+})
+
 const {
   userJoin,
   getCurrentUser,
