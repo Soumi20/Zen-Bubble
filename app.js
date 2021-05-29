@@ -217,23 +217,6 @@ io.on('connection', (socket) => {
       res.render("leaderboard", {users:users})
       })
     });
-
-     /* res.render("leaderboard", {
-        users:result 
-        });
-    );
-      app.get("/leaderboard",function(req,res){
-   const result= User.find().sort({score:-1});
-    result.find({},function(err,users){
-      res.render("leaderboard", {users:users})
-      })
-    });
-    });*/
-    
-  //   User.find({}, function(err, users){
-  //     console.log("Hi");
-  
-
   
   // Community help page rendering
   var result;
@@ -252,23 +235,27 @@ io.on('connection', (socket) => {
     const emotiontext = req.body.emotiontxt;
     var sentiment = new Sentiment();
     result = sentiment.analyze(emotiontext,options).comparative;
-console.log(result);
-    res.render("community",{result:result});
+    console.log(result);
+    /*res.render("community",{result:result});*/
     //return res.redirect("index");
   });
 
-  app.get("/community",
+  app.get("/community", function(req, res) {
+    res.render("community",{result:result});
+  });
+
+  /*app.get("/community",
   function(req,res,next){
     if(req.isAuthenticated()){
       return next();
     }
-    //req.flash("error","You need to be logged in first!");
-    res.render("modal_form.ejs"); //if not logged in, go to login page
+    
+    res.render("modal_form.ejs"); 
     }, (req, res)=> {
     res.render("community",{
       result:result
     });
-  });
+  });*/
   result = 0;
 
   // Journal page rendering

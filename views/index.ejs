@@ -47,13 +47,17 @@
               <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/community">Community Help</a>
+              <% if(currentUser){ %>
+                <a class="nav-link" aria-current="page" href="/community">Community Help</a>
+              <% } %>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/journal">Journal</a>
             </li>
             <li class="nav-item">
+              <% if(currentUser){ %>
               <a class="nav-link" aria-current="page" href="/meditate">Meditate</a>
+              <% } %>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/leaderboard">Leaderboard</a>
@@ -67,9 +71,7 @@
           <li class="nav-item nav-item-active">
           <a class="nav-link " href="/logout">Logout</a>
           </li>
-        <% } %>
-                <!-- <a id="modal_btn" class="nav-link btn-get-quote text-white" href="#Login">Login</a> -->
-        
+        <% } %>      
            
             <li class="nav-item" style="background-color: #C2F1B5 !important; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;">
               <% if(currentUser){ %>
