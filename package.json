@@ -10,7 +10,7 @@
     "author": "Swatilekha Roy",
     "license": "MIT",
     "dependencies": {
-        "azure-maps-control": "^2.0.32",
+        "axios": "^0.21.1",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
         "dotenv": "^10.0.0",

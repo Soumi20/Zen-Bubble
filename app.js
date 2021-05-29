@@ -21,6 +21,8 @@
 
    //passport authentication
    var User=require("./db/models/users");
+   var Match=require("./db/models/match");
+   var MatchUser=require("./db/models/match");
    var passport=require("passport");
    var localStrategy=require("passport-local"),
    methodOverride=require("method-override");
@@ -40,9 +42,6 @@
  passport.use(new localStrategy(User.authenticate()));
  passport.serializeUser(User.serializeUser());
  passport.deserializeUser(User.deserializeUser());
- 
-
-
 
   // Socket.io imports
   const http = require("http");
@@ -101,10 +100,15 @@
 //Meditation room
 app.get("/meditate", (req, res)=> {
   res.render("meditate");
-})
+});
+
 app.get("/medroom", (req, res)=> {
   res.render("medroom");
-})
+});
+
+/*app.post("/medroom", (request, response) => {
+  console.log(request);
+});*/
 
 const {
   userJoin,
@@ -217,17 +221,59 @@ app.get("/room", (req, res)=> {
     const emotiontext = req.body.emotiontxt;
     var sentiment = new Sentiment();
     result = sentiment.analyze(emotiontext,options).comparative;
+console.log(result);
+var name=req.user.name;
+var username=req.user.username;
+var score=req.user.score;
+var feeling=result;
+Match.create({
+  name:name,
+  username:username,
+  score:score,
+  feeling:result
+}, function(err,newlyCreated){
+  if(err)
+  {
+    console.log(err);
+  }
+  else
+  console.log(newlyCreated);
+});
+    res.render("community",{result:result});
+    console.log(result);
+    /*res.render("community",{result:result});*/
     console.dir(result);
 
-    res.render("community",{result:result});
+    if(result<0){
+      var query=MatchUser.find({ score: { $gt: -1 } });
+   }else{
+      var query=MatchUser.find({ score: { $lt: 0 } });
+   }
+
+   query.find({},function(err,query){
+     res.render("community", {query:query,result:result})
+     });
+
+    // res.ren/der("community",{result:result});
     //return res.redirect("index");
   });
 
   app.get("/community", (req, res)=> {
-    res.render("community",{
-      result:result
-    });
+    // const query
+    // res.render("community",{
+    //   result:result
+    // });
+    if(result<0){
+       var query=MatchUser.find({ score: { $gt: -1 } });
+    }else{
+       var query=MatchUser.find({ score: { $lt: 0 } });
+    }
+
+    query.find({},function(err,query){
+      res.render("community", {query:query, result:result})
+      });
   });
+
   result = 0;
 
 

@@ -3,6 +3,7 @@ const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
+  
 
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -67,6 +68,8 @@ function outputUsers(users) {
 }
 
 
+
+
 window.onload = function () {
   
   var seconds = 00; 
@@ -81,23 +84,59 @@ window.onload = function () {
   buttonStart.onclick = function() {
     
      clearInterval(Interval);
-     Interval = setInterval(startTimer, 10);
+     Interval = setInterval(startTimer, 1000);
   }
   
     buttonStop.onclick = function() {
        clearInterval(Interval);
-  }
-  
 
-  buttonReset.onclick = function() {
-     clearInterval(Interval);
-    tens = "00";
-  	seconds = "00";
-    appendTens.innerHTML = tens;
-  	appendSeconds.innerHTML = seconds;
-  }
-  
+
+  // Calculate points
+  var medsc
+  if(seconds >= 5)
+  {
+    medsc = 5*seconds;
+    console.log(medsc);
+    /*const data = {medsc};
+    const options = {
+      method: 'POST',
+      headers : {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };*/
+
    
+  }
+  medsc = 5;
+  fetch("https://jsonplaceholder.typicode.com/posts",{
+    method: "POST",
+    body: JSON.stringify({
+      title: "Ritoja",
+      body: medsc
+    }),
+    headers : {
+      "Content-Type": "application/json; charset = UTF-8"
+    }
+  })
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    console.log(data);
+  })
+
+  /*fetch('https://jsonplaceholder.typicode.com/posts?userId=101')
+    .then(res => res.json())
+    .then(json => {
+        console.log("First user in the array:");
+        console.log(json[0]);
+           console.log("Name of the first user in the array:");
+        console.log(json[0].name);
+})*/
+  
+}
+
   
   function startTimer () {
     tens++; 
@@ -111,8 +150,7 @@ window.onload = function () {
       
     } 
     
-    if (tens > 99) {
-      console.log("seconds");
+    if (tens > 59) {
       seconds++;
       appendSeconds.innerHTML = "0" + seconds;
       tens = 0;
@@ -125,5 +163,6 @@ window.onload = function () {
   
   }
   
-
 }
+
+
