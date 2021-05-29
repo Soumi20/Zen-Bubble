@@ -3,6 +3,7 @@ const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
+  
 
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -67,6 +68,8 @@ function outputUsers(users) {
 }
 
 
+
+
 window.onload = function () {
   
   var seconds = 00; 
@@ -81,23 +84,21 @@ window.onload = function () {
   buttonStart.onclick = function() {
     
      clearInterval(Interval);
-     Interval = setInterval(startTimer, 10);
+     Interval = setInterval(startTimer, 1000);
   }
   
     buttonStop.onclick = function() {
        clearInterval(Interval);
-  }
+       
   
+  // Calculate points
+  if(tens >= 30*5)
+  {
+    var sc = 5*(tens/60);
+    console.log(sc);
+  }
+}
 
-  buttonReset.onclick = function() {
-     clearInterval(Interval);
-    tens = "00";
-  	seconds = "00";
-    appendTens.innerHTML = tens;
-  	appendSeconds.innerHTML = seconds;
-  }
-  
-   
   
   function startTimer () {
     tens++; 
@@ -111,9 +112,10 @@ window.onload = function () {
       
     } 
     
-    if (tens > 99) {
+    if (tens > 59) {
       console.log("seconds");
       seconds++;
+      console.log(seconds);
       appendSeconds.innerHTML = "0" + seconds;
       tens = 0;
       appendTens.innerHTML = "0" + 0;
@@ -125,5 +127,6 @@ window.onload = function () {
   
   }
   
-
 }
+
+

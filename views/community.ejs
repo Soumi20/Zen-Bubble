@@ -51,7 +51,7 @@
               <a class="nav-link" aria-current="page" href="/journal">Journal</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="home.html">Meditate</a>
+              <a class="nav-link" aria-current="page" href="/meditate">Meditate</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/leaderboard">Leaderboard</a>
@@ -98,6 +98,35 @@
         <div class="col-10 col-md-5 col-lg-4">
           <button class="btn btn-primary convo-btn" onclick="openchat()" type="submit" name="convo-btn" style="display: none; margin-top: 10%;">Explore!</button>
           <button class="btn btn-primary feel-btn" onclick="feelbox()" type="submit" name="feel-btn" style="display: none; margin-top: 10%;">Feeling Different Now.</button>     
+          <!--<button class="btn btn-primary trigger-push" style="display: none;">Trigger Push Notification</button>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="display: none;">
+      <% query.forEach(function(user){ %>
+        <p><%=user.name%></p>
+        <p><%=user.score%></p>
+   
+     <% }) %>
+    </div>
+    
+
+    <!-- Explanation -->
+    <div class="container exp-con" style="margin-top: 6%;">
+      <div class="row">
+        <h4>How to be a part of our Community Help Chat?</h4> 
+        <div class="col-12 col-md-10">
+          <ul>
+            <li>Enter how you are feeling in the text-box above, no word limit.</li>
+            <li>Click Submit.</li>
+            <li>If you are willing to help someone or take help according to our suggestion, click the 'Help Someone!' or 'Seek Help!' button.</li> 
+            <li>Allow us permission to send you notifications.</li>
+            <li>Receive a room code to enter as soon as you are matched with someone.</li>
+            <li>Enter unique room code in the input box, and boom!</li>
+            <li>Talk your heart out!</li>
+            <li>We also request you to feedback the conversation. Your two minutes would make someone else's day!</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -110,12 +139,9 @@
           </form>
       </div>
     </div>
-    <div class="buttons">
-      <button class="trigger-push">Trigger Push Notification</button>
-    </div>
 
     <!-- Footer -->
-    <footer style="position: fixed; bottom: 0; right: 0; left: 0;">
+    <footer class="com-foot">
       <div class="container">
         <div class="row">
           <div class="col-md-3 footer-left">
@@ -125,7 +151,7 @@
           </div>
           <div class="col-md-3 offset-md-1 footer-right">
             <a href="https://github.com/Swatilekha-Roy/Zen-Bubble"><i class="fab fa-github"></i></a>
-						<a href="mailto:swatilekha.roy4@gmail.com"><i class="fa fa-envelope"></i></a>
+						<a href="mailto:swatilekha.roy4@gmail.com" ><i class="fa fa-envelope"></i></a>
           </div>
         </div>
       </div>
@@ -144,7 +170,7 @@
     <script type="text/javascript" src="js/scripts.js"></script>
     <script type="text/javascript" src="js/community.js"></script>
     <script type="text/javascript" src="js/wow.min.js"></script>
-    <script  type="text/javascript" src="push.js"></script>
+    <script  type="text/javascript" src="js/push.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>

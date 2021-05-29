@@ -23,6 +23,7 @@
    //passport authentication
    var User=require("./db/models/users");
    var Match=require("./db/models/match");
+   var MatchUser=require("./db/models/match");
    var passport=require("passport");
    var localStrategy=require("passport-local"),
    methodOverride=require("method-override");
@@ -41,9 +42,6 @@
  passport.use(new localStrategy(User.authenticate()));
  passport.serializeUser(User.serializeUser());
  passport.deserializeUser(User.deserializeUser());
- 
-
-
 
   // Socket.io imports
   const http = require("http");
@@ -119,10 +117,6 @@
 
 
 //Meditation room
-/*app.get("/meditate", (req, res)=> {
-  res.sendFile(path.join(__dirname, './public/home.html'));
-});*/
-
 app.get("/meditate", (req, res)=> {
   res.render("meditate");
 })
@@ -226,7 +220,8 @@ io.on('connection', (socket) => {
       res.render("leaderboard", {users:users})
       })
     });
-  
+
+    
   // Community help page rendering
   var result;
 
@@ -265,14 +260,40 @@ Match.create({
     res.render("community",{result:result});
     console.log(result);
     /*res.render("community",{result:result});*/
+    console.dir(result);
+
+    if(result<0){
+      var query=MatchUser.find({ score: { $gt: -1 } });
+   }else{
+      var query=MatchUser.find({ score: { $lt: 0 } });
+   }
+
+   query.find({},function(err,query){
+     res.render("community", {query:query,result:result})
+     });
+
+    // res.ren/der("community",{result:result});
     //return res.redirect("index");
   });
 
-  app.get("/community", function(req, res) {
-    res.render("community",{result:result});
+  app.get("/community", (req, res)=> {
+    // const query
+    // res.render("community",{
+    //   result:result
+    // });
+    if(result<0){
+       var query=MatchUser.find({ score: { $gt: -1 } });
+    }else{
+       var query=MatchUser.find({ score: { $lt: 0 } });
+    }
+
+    query.find({},function(err,query){
+      res.render("community", {query:query, result:result})
+      });
   });
 
   result = 0;
+
 
   // Journal page rendering
   app.get("/journal", (req, res)=> {
