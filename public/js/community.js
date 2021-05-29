@@ -30,7 +30,7 @@ var form = document.getElementById('form');
     document.querySelector(".feel-btn").style.display = "block";
     document.querySelector(".convo-btn").innerHTML = "Help Someone!";
     document.querySelector(".txt-input").style.display = "none";
-    document.querySelector(".com-foot").style.display = "none";
+    document.querySelector(".com-foot").style.display = "block";
   }
 
   else if(val < 0)
@@ -40,7 +40,7 @@ var form = document.getElementById('form');
     document.querySelector(".feel-btn").style.display = "block";
     document.querySelector(".convo-btn").innerHTML = "Seek Help!";
     document.querySelector(".txt-input").style.display = "none";
-    document.querySelector(".com-foot").style.display = "none";
+    document.querySelector(".com-foot").style.display = "block";
   }
 
   else
@@ -64,8 +64,8 @@ var form = document.getElementById('form');
     document.querySelector(".chat-container").style.display = "block";
     document.querySelector(".convo-btn").style.display = "none";
     document.querySelector(".dum").style.display = "none";
-    document.querySelector("footer").style.display = "none";
     document.querySelector(".com-foot").style.display = "none";
+    document.querySelector(".exp-con").style.display = "none";
   }
 
  
