@@ -1,4 +1,6 @@
 var mongoose=require("mongoose"),
+passportLocal=require("passport-local-mongoose");
+
 
 var matchSchema=new mongoose.Schema({
     name: {
