@@ -103,11 +103,14 @@
       </div>
     </div>
 
-    <% query.forEach(function(user){ %>
-      <p><%=user.name%></p>
-      <p><%=user.score%></p>
- 
-   <% }) %>
+    <div class="container" style="display: none;">
+      <% query.forEach(function(user){ %>
+        <p><%=user.name%></p>
+        <p><%=user.score%></p>
+   
+     <% }) %>
+    </div>
+    
 
     <!-- Explanation -->
     <div class="container exp-con" style="margin-top: 6%;">
