@@ -154,7 +154,7 @@ io.on("connection", (socket) => {
     // Welcome current user
     socket.emit(
       "message",
-      formatMessage(botName, "Welcome to Meditation Zone!")
+      formatMessage(botName, "Welcome!")
     );
 
     // Broadcast to all connections except the current connection joining
@@ -198,9 +198,9 @@ io.on("connection", (socket) => {
 
 //Community Room
 
-app.get("/room_container", (req, res) => {
-  res.render("room_container");
-});
+// app.get("/room_container", (req, res) => {
+//   res.render("room_container");
+// });
 app.get("/room", (req, res) => {
   res.render("room");
 });
@@ -378,7 +378,7 @@ app.post("/room", (req, res) => {
   if (rooms[req.body.room] != null) {
     return res.redirect("/");
   }
-  rooms[req.body.room] = { users: {} };
+  rooms[req.body.room] = { users:users};
   res.redirect(req.body.room);
   // Send message that new room was created
   io.emit("room-created", req.body.room);

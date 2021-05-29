@@ -78,6 +78,8 @@ function validateForm() {
     alert("Invalid Room id;");
     return false;
   }
+  else window.location.replace('/room');
+
 }
 
   

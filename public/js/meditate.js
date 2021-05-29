@@ -17,7 +17,6 @@ socket.emit('joinRoom', { username, room });
 // Get room and users
 socket.on('roomUsers', ({ room, users }) => {
   outputRoomName(room);
-  outputUsers(users);
 });
 
 // Message from server
@@ -59,11 +58,6 @@ function outputRoomName(room) {
   roomName.innerText = room;
 }
 
-function outputUsers(users) {
-  userList.innerHTML = `
-    ${users.map((user) => `<li>${user.username}</li>`).join('')}
-    `;
-}
 
 if(room == "meditation1")
 document.getElementById('audiotag1').play();
