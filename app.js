@@ -118,10 +118,15 @@
 //Meditation room
 app.get("/meditate", (req, res)=> {
   res.render("meditate");
-})
+});
+
 app.get("/medroom", (req, res)=> {
   res.render("medroom");
-})
+});
+
+/*app.post("/medroom", (request, response) => {
+  console.log(request);
+});*/
 
 const {
   userJoin,
