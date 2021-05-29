@@ -304,6 +304,7 @@ if(user!=null){
       }
   });
   }
+  res.render("community",{query: [],result:result});
 });
 /*query.find({},function(err,queries){
      console.log(queries)
