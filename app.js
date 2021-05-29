@@ -11,7 +11,7 @@
   var Sentiment = require("sentiment");
   require("./db/conn");
   require("dotenv").config();
-  //const Register = require("./db/models/users");
+  
   const { resolveSoa } = require("dns");
 
   //import { meditationsc } from "./public/js/meditate.js";
@@ -36,6 +36,7 @@
      resave: false,
      saveUninitialized: false
    }))
+
  // Database connect
  mongoose.connect("mongodb+srv://chehak:123@cluster0.ohkb1.mongodb.net/UserDB" , {useNewUrlParser : true, useUnifiedTopology: true } );
 
@@ -53,13 +54,6 @@
   const { Server } = require("socket.io");
   const io = new Server(server);
 
-  // app.use(
-  //   require("express-session")({
-  //     secret: "!@#$%^&*()",
-  //     resave: false,
-  //     saveUninitialized: false,
-  //   })
-  // );
 
   // Create application/x-www-form-urlencoded parser
   var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -106,18 +100,6 @@
       webPush.sendNotification(subscription, payload)
       .catch(error => console.error(error));
   });
-/*
- 
-
-
-//middleware
- /*isLoggedIn=function(req,res,next){
-  if(req.isAuthenticated()){
-    return next();
-  }
-  //req.flash("error","You need to be logged in first!");
-  res.redirect("./views/modal_form.ejs"); //if not logged in, go to login page
-  };*/
 
 
 //Meditation room
@@ -141,11 +123,6 @@ const {
   uniqueUser,
 } = require('./utils/users');
 
-// const app = express();
-// const server = http.createServer(app);
-// const io = socketio(server);
-
-// app.use(express.static(path.join(__dirname, 'public')));
 
 const botName = 'Zen Bubble';
 
@@ -210,16 +187,17 @@ io.on('connection', (socket) => {
   });
 });
 
+//Community Room
 
-  
- /* const userSchema = new mongoose.Schema({
-    name:String,
-    score:Number
-  });
-  
-  const User=mongoose.model("User",userSchema);*/
+app.get("/room_container", (req, res)=> {
+  res.render("room_container");
+})
+app.get("/room", (req, res)=> {
+  res.render("room");
+})
 
-  // db.collection_name.find().sort({field_name: sort order})
+
+
 
   // Leaderboard page rendering
   app.get("/leaderboard",function(req,res){
@@ -337,9 +315,63 @@ Match.create({
     });
   });
 
+// Community Room
+
+const rooms = { } 
+
+app.get('/room_container', (req, res) => {
+  res.render('room_container', { rooms: rooms })
+})
+
+app.post('/room', (req, res) => {
+  if (rooms[req.body.room] != null) {
+    return res.redirect('/')
+  }
+  rooms[req.body.room] = { users: {} }
+  res.redirect(req.body.room)
+  // Send message that new room was created
+  io.emit('room-created', req.body.room)
+})
+
+app.get('/:room', (req, res) => {
+  if (rooms[req.params.room] == null) {
+    return res.redirect('/')
+  }
+  res.render('room', { roomName: req.params.room })
+})
+
+io.on('connection', socket => {
+  socket.on('new-user', (room, name) => {
+    socket.join(room)
+    rooms[room].users[socket.id] = name
+    socket.to(room).broadcast.emit('user-connected', name)
+  })
+  socket.on('send-chat-message', (room, message) => {
+    socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
+  })
+  socket.on('disconnect', () => {
+    getUserRooms(socket).forEach(room => {
+      socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
+      delete rooms[room].users[socket.id]
+    })
+  })
+})
+
+function getUserRooms(socket) {
+  return Object.entries(rooms).reduce((names, [name, room]) => {
+    if (room.users[socket.id] != null) names.push(name)
+    return names
+  }, [])
+}
+
+
   // Ports 
   const PORT = process.env.PORT || 3000;
 
   server.listen(PORT, () => {
     console.log(`Lazy bum on Port ${PORT}`);
   });
+
+
+
+

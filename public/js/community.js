@@ -3,6 +3,7 @@ var socket = io();
 
 var form = document.getElementById('form');
   var input = document.getElementById('input');
+  // var roomBtn = document.getElementById('roomBtn');
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -67,5 +68,10 @@ var form = document.getElementById('form');
     document.querySelector(".com-foot").style.display = "none";
     document.querySelector(".exp-con").style.display = "none";
   }
+
+
+
+
+  
 
  
