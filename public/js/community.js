@@ -30,6 +30,7 @@ var form = document.getElementById('form');
     document.querySelector(".feel-btn").style.display = "block";
     document.querySelector(".convo-btn").innerHTML = "Help Someone!";
     document.querySelector(".txt-input").style.display = "none";
+    //document.querySelector(".trigger-push").style.display = "block";
   }
 
   else if(val < 0)
@@ -39,6 +40,7 @@ var form = document.getElementById('form');
     document.querySelector(".feel-btn").style.display = "block";
     document.querySelector(".convo-btn").innerHTML = "Seek Help!";
     document.querySelector(".txt-input").style.display = "none";
+    //document.querySelector(".trigger-push").style.display = "block";
   }
 
   else
@@ -47,6 +49,7 @@ var form = document.getElementById('form');
     document.querySelector(".dum").innerHTML = "";
     document.querySelector(".feel-btn").style.display = "none";
     document.querySelector(".convo-btn").innerHTML = "Explore!";
+    //document.querySelector(".trigger-push").style.display = "none";
   }
 
   function feelbox() {
@@ -54,6 +57,7 @@ var form = document.getElementById('form');
     document.querySelector(".dum").style.display = "none";
     document.querySelector(".convo-btn").style.display = "none";
     document.querySelector(".feel-btn").style.display = "none";
+
   }
 
   function openchat() {
@@ -61,6 +65,7 @@ var form = document.getElementById('form');
     document.querySelector(".convo-btn").style.display = "none";
     document.querySelector(".dum").style.display = "none";
     document.querySelector("footer").style.display = "none";
+    //document.querySelector(".trigger-push").style.display = "none";
   }
 
  

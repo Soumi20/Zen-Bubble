@@ -118,10 +118,6 @@
 
 
 //Meditation room
-/*app.get("/meditate", (req, res)=> {
-  res.sendFile(path.join(__dirname, './public/home.html'));
-});*/
-
 app.get("/meditate", (req, res)=> {
   res.render("meditate");
 })
@@ -225,7 +221,8 @@ io.on('connection', (socket) => {
       res.render("leaderboard", {users:users})
       })
     });
-  
+
+    
   // Community help page rendering
   var result;
 
@@ -243,16 +240,19 @@ io.on('connection', (socket) => {
     const emotiontext = req.body.emotiontxt;
     var sentiment = new Sentiment();
     result = sentiment.analyze(emotiontext,options).comparative;
-    console.log(result);
-    /*res.render("community",{result:result});*/
+    console.dir(result);
+
+    res.render("community",{result:result});
     //return res.redirect("index");
   });
 
-  app.get("/community", function(req, res) {
-    res.render("community",{result:result});
+  app.get("/community", (req, res)=> {
+    res.render("community",{
+      result:result
+    });
   });
-
   result = 0;
+
 
   // Journal page rendering
   app.get("/journal", (req, res)=> {

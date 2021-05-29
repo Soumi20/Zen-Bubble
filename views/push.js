@@ -16,7 +16,7 @@ function urlBase64ToUint8Array(base64String) {
   
   const publicVapidKey = 'BJTd2ymC94ZkUzaGdYl1gyLifxF6H-wMXQE4x_tSat3BHbqZ7zcCEAtDhzqI_acv9AiA5LtHmGURmquMiDox4AA';
   
-  const triggerPush = document.querySelector('.trigger-push');
+  const triggerPush = document.querySelector('.convo-btn');
   
   async function triggerPushNotification() {
     if ('serviceWorker' in navigator) {
