@@ -14,7 +14,7 @@ function urlBase64ToUint8Array(base64String) {
     return outputArray;
   }
   
-  const publicVapidKey = 'BJTd2ymC94ZkUzaGdYl1gyLifxF6H-wMXQE4x_tSat3BHbqZ7zcCEAtDhzqI_acv9AiA5LtHmGURmquMiDox4AA';
+  const publicVapidKey = 'BE0Y3YlimVh26MEOy-JGbVKwAXVoOa7wVrD61APqyQvpebO-F4TVWE7Pt0IjvO80pq3LOvAx4QKirXIesuJfB08';
   
   const triggerPush = document.querySelector('.convo-btn');
   

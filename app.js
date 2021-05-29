@@ -104,7 +104,7 @@ app.post("/subscribe", (req, res) => {
   res.status(201).json({});
 
   const payload = JSON.stringify({
-    title: "Push notifications with Service Workers",
+    title: "Room Id for community help",
   });
   webPush
     .sendNotification(subscription, payload)
