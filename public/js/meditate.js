@@ -3,7 +3,7 @@ const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
-  
+var medsc;
 
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -72,8 +72,8 @@ function outputUsers(users) {
 
 window.onload = function () {
   
-  var seconds = 00; 
-  var tens = 00; 
+  var seconds = 0; 
+  var tens = 0; 
   var appendTens = document.getElementById("tens")
   var appendSeconds = document.getElementById("seconds")
   var buttonStart = document.getElementById('button-start');
@@ -92,48 +92,14 @@ window.onload = function () {
 
 
   // Calculate points
-  var medsc
-  if(seconds >= 5)
-  {
-    medsc = 5*seconds;
-    console.log(medsc);
-    /*const data = {medsc};
-    const options = {
-      method: 'POST',
-      headers : {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    };*/
 
-   
-  }
-  medsc = 5;
-  fetch("https://jsonplaceholder.typicode.com/posts",{
-    method: "POST",
-    body: JSON.stringify({
-      title: "Ritoja",
-      body: medsc
-    }),
-    headers : {
-      "Content-Type": "application/json; charset = UTF-8"
+    if(seconds >= 5)
+    {
+      medsc = 5*seconds;
+      console.log(medsc);
     }
-  })
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    console.log(data);
-  })
-
-  /*fetch('https://jsonplaceholder.typicode.com/posts?userId=101')
-    .then(res => res.json())
-    .then(json => {
-        console.log("First user in the array:");
-        console.log(json[0]);
-           console.log("Name of the first user in the array:");
-        console.log(json[0].name);
-})*/
+    medsc = 5;
+    console.log(medsc);
   
 }
 
@@ -166,3 +132,4 @@ window.onload = function () {
 }
 
 
+export var meditationsc = medsc;

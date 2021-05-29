@@ -14,6 +14,10 @@
   //const Register = require("./db/models/users");
   const { resolveSoa } = require("dns");
 
+  //import { meditationsc } from "./public/js/meditate.js";
+
+  //console.log(meditationsc);
+
  
   const formatMessage = require('./utils/messages');
 

@@ -10,7 +10,6 @@
     "author": "Swatilekha Roy",
     "license": "MIT",
     "dependencies": {
-        "axios": "^0.21.1",
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
         "dotenv": "^10.0.0",
@@ -30,5 +29,6 @@
         "sentiment": "^5.0.2",
         "socket.io": "^4.1.2",
         "web-push": "^3.4.4"
-    }
+    },
+    "devDependencies": {}
 }
