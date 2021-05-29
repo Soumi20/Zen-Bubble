@@ -60,7 +60,4 @@ function outputRoomName(room) {
   roomName.innerText = "Room: 123";
 }
 
-// function outputUsers(user) {
-//   // userList.innerHTML = `${users.map((user) => `<li>${user.username}</li>`).join('')}`;
-//   userList.innerHTML = `<li>${user.username}</li>` ;
-// }
+
