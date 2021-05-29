@@ -62,7 +62,7 @@ var form = document.getElementById('form');
   }
 
   function openchat() {
-    document.querySelector(".chat-container").style.display = "block";
+    document.querySelector(".join-container").style.display = "block";
     document.querySelector(".convo-btn").style.display = "none";
     document.querySelector(".dum").style.display = "none";
     document.querySelector(".com-foot").style.display = "none";
@@ -70,7 +70,15 @@ var form = document.getElementById('form');
   }
 
 
-
+// var roomId = document.getElementById('room').value;
+function validateForm() {
+  var x = document.forms["myForm"]["room"].value;
+  const uniqueId = "123";
+  if (x != uniqueId) {
+    alert("Invalid Room id;");
+    return false;
+  }
+}
 
   
 

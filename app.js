@@ -371,7 +371,3 @@ function getUserRooms(socket) {
   server.listen(PORT, () => {
     console.log(`Lazy bum on Port ${PORT}`);
   });
-
-
-
-
