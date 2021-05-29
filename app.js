@@ -24,6 +24,7 @@
 
    //passport authentication
    var User=require("./db/models/users");
+   var Match=require("./db/models/match");
    var passport=require("passport");
    var localStrategy=require("passport-local"),
    methodOverride=require("method-override");
@@ -262,6 +263,23 @@ io.on('connection', (socket) => {
     var sentiment = new Sentiment();
     result = sentiment.analyze(emotiontext,options).comparative;
 console.log(result);
+var name=req.user.name;
+var username=req.user.username;
+var score=req.user.score;
+var feeling=result;
+Match.create({
+  name:name,
+  username:username,
+  score:score,
+  feeling:result
+}, function(err,newlyCreated){
+  if(err)
+  {
+    console.log(err);
+  }
+  else
+  console.log(newlyCreated);
+});
     res.render("community",{result:result});
     //return res.redirect("index");
   });
