@@ -120,9 +120,6 @@ app.get("/medroom", (req, res) => {
   res.render("medroom");
 });
 
-/*app.post("/medroom", (request, response) => {
-  console.log(request);
-});*/
 
 const {
   userJoin,
