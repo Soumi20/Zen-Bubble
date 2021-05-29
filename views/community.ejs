@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/c-styles.css">
+    <link rel="stylesheet" href="css/modal_form.css">
+    <link rel="stylesheet" href="css/toast.css">
 
     <!-- Title of Page -->
     <title>Zen Bubble</title>
@@ -25,6 +27,8 @@
 
   
   <body>
+    <%- include('modal_form') %>
+    <%- include('toast') %>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #C2F1B5 !important;">
@@ -52,6 +56,22 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/leaderboard">Leaderboard</a>
             </li>
+
+            <% if(!currentUser){ %>
+              <li class="nav-item">
+              <a id="modal_btn" class="nav-link btn-get-quote text-white" href="#login">Login</a>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+              <a class="nav-link " href="/logout">Logout</a>
+              </li>
+            <% } %>      
+              
+                <li class="nav-item" style="background-color: #C2F1B5 !important; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;">
+                  <% if(currentUser){ %>
+                    <a class="nav-link" aria-current="page" href="/profile" style="margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;"><i class="fas fa-user-circle" style="font-size: 36px; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #5DB274;"></i></a>
+                  <% } %>
+                </li>
           </ul>
         </div>
       </div>

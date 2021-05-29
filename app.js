@@ -1,8 +1,6 @@
   // Imports 
   require('dotenv').config({ path: 'variables.env' });
-    
-
-    const webPush = require('web-push');
+  const webPush = require('web-push');
   const express = require("express");
   const path = require("path");
   const mongoose = require("mongoose");
@@ -36,7 +34,7 @@
  // Database connect
  mongoose.connect("mongodb+srv://chehak:123@cluster0.ohkb1.mongodb.net/UserDB" , {useNewUrlParser : true, useUnifiedTopology: true } );
 
-app.use(methodOverride("_method"));
+ app.use(methodOverride("_method"));
  app.use(passport.initialize());  //use to use passport in our code
  app.use(passport.session());
  
@@ -121,10 +119,17 @@ app.use(methodOverride("_method"));
 
 
 //Meditation room
+/*app.get("/meditate", (req, res)=> {
+  res.sendFile(path.join(__dirname, './public/home.html'));
+});*/
 
 app.get("/meditate", (req, res)=> {
-  res.sendFile(path.join(__dirname, './public/home.html'));
-});
+  res.render("meditate");
+})
+app.get("/medroom", (req, res)=> {
+  res.render("medroom");
+})
+
 const {
   userJoin,
   getCurrentUser,
@@ -211,12 +216,6 @@ io.on('connection', (socket) => {
   
   const User=mongoose.model("User",userSchema);*/
 
-
-  // Homepage rendering
-  app.get("/", (req, res)=> {
-    res.render("index");
-  });
-
   // db.collection_name.find().sort({field_name: sort order})
 
   // Leaderboard page rendering
@@ -227,23 +226,6 @@ io.on('connection', (socket) => {
       res.render("leaderboard", {users:users})
       })
     });
-
-     /* res.render("leaderboard", {
-        users:result 
-        });
-    );
-      app.get("/leaderboard",function(req,res){
-   const result= User.find().sort({score:-1});
-    result.find({},function(err,users){
-      res.render("leaderboard", {users:users})
-      })
-    });
-    });*/
-    
-  //   User.find({}, function(err, users){
-  //     console.log("Hi");
-  
-
   
   // Community help page rendering
   var result;
@@ -281,21 +263,15 @@ Match.create({
   console.log(newlyCreated);
 });
     res.render("community",{result:result});
+    console.log(result);
+    /*res.render("community",{result:result});*/
     //return res.redirect("index");
   });
 
-  app.get("/community",
-  function(req,res,next){
-    if(req.isAuthenticated()){
-      return next();
-    }
-    //req.flash("error","You need to be logged in first!");
-    res.render("modal_form.ejs"); //if not logged in, go to login page
-    }, (req, res)=> {
-    res.render("community",{
-      result:result
-    });
+  app.get("/community", function(req, res) {
+    res.render("community",{result:result});
   });
+
   result = 0;
 
   // Journal page rendering
@@ -310,7 +286,11 @@ Match.create({
   app.get("/blog2", (req, res)=> {
     res.render("blog2");
   })
+  app.get("/blog3", (req, res)=> {
+    res.render("blog3");
+  })
 
+  // Feedback page rendering
   app.get("/feedback", (req, res)=> {
     res.render("feedback");
   })
