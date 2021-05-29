@@ -118,7 +118,6 @@
 
 
 //Meditation room
-
 app.get("/meditate", (req, res)=> {
   res.sendFile(path.join(__dirname, './public/home.html'));
 });
@@ -207,12 +206,6 @@ io.on('connection', (socket) => {
   });
   
   const User=mongoose.model("User",userSchema);*/
-
-
-  // Homepage rendering
-  app.get("/", (req, res)=> {
-    res.render("index");
-  });
 
   // db.collection_name.find().sort({field_name: sort order})
 
