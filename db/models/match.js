@@ -6,7 +6,7 @@ var matchSchema=new mongoose.Schema({
     },
 	username:{
         type:String,
-        unique:true
+       
     },
     score:{
         type:Number
