@@ -17,7 +17,9 @@ https://zen-bubble.herokuapp.com/
 
 ## How to run?
 Please enter the following commands on your command prompt:
+
 `npm i`
 
 `npm run dev` or `node app.js`
+
 Your web app should be running on `localhost:3000`.
